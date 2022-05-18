@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CannySlider.cpp">
+    <ClCompile Include="Chapter8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
