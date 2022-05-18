@@ -2,21 +2,19 @@
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/highgui.hpp"
 #include <iostream>
-using namespace cv;
-using namespace std;
+
 int main(int argc, char** argv)
 {
-
     // First we declare the variables we are going to use
-    Mat image, cannyImg;
-    const String window_name = "Canny Demo - Edge Detector";
+    cv::Mat image, cannyImg;
+    const std::string window_name = "Canny Demo - Edge Detector";
     int thres1 = 2;
     int thres2 = 1;
     bool L2 = false;
 
-    String imageName = "Resources/lambo.png";
-    // As usual we load our source image (src)
-    image = imread(samples::findFile(imageName), IMREAD_COLOR); // Load an image
+    std::string imageName = "Resources/lambo.png";
+    image = cv::imread(cv::samples::findFile(imageName), cv::IMREAD_COLOR); // Load an image
+
     // Check if image is loaded fine
     if (image.empty())
     {
@@ -24,12 +22,13 @@ int main(int argc, char** argv)
         return EXIT_FAILURE;
     }
     for (;;)
-    {
-        // Remove noise by blurring with a Gaussian filter ( kernel size = 3 )
-        
+    {        
+        //apply filter and show result
         cv::Canny(image, cannyImg, thres1, thres2, 3, L2);
         cv::imshow(window_name, cannyImg);
-        char key = (char)waitKey(0);
+
+        //get key inputs to change the variables
+        char key = (char)cv::waitKey(0);
         if (key == 27)
         {
             return EXIT_SUCCESS;
@@ -50,7 +49,6 @@ int main(int argc, char** argv)
         {
             thres2-=10;
         }
-
         if (key == 'h' || key == 'H') {
             L2 = !L2;
         }
