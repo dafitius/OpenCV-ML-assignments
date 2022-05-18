@@ -84,7 +84,12 @@ void main() {
     if (opdracht3)cv::imshow("dilate filter", dilateImg);
 
 
+    cv::Mat balls = cv::imread("Resources/ballsStripes.png");
+    cv::Mat dilateBalls;
 
+    cv::dilate(balls, dilateBalls, kernel);
+    if (opdracht3)cv::imshow("Balls", balls);
+    if (opdracht3)cv::imshow("dilated Balls", dilateBalls);
 
     cv::waitKey(0);
 }
